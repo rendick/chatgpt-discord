@@ -2,3 +2,5 @@
 ChatGPT Discord bot
 
 ---
+
+Soon..
