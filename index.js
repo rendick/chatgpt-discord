@@ -36,4 +36,6 @@ bot.on("messageCreate", (msg) => {
     }
 });
 
+// test
+
 bot.connect();
