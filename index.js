@@ -21,24 +21,23 @@ async function runCompletion(message) {
   return completion.data.choices[0].text;
 }
 
-bot.on("ready", () => {
-  bot.editStatus('dnd', {
-    name: "*help",
-    type: 1, 
-    url: "https://discordapp.com",
-  });
-});
+// bot.on("ready", () => {
+//   bot.editStatus("dnd", {
+//     name: "*help",
+//     type: 1,
+//     url: "https://discordapp.com",
+//   });
+// });
 
 bot.on("ready", () => {
-    console.log("Bot is ready!");
-    bot.editSelf({
-      username: "ChatGPT",
-      description: "A Discord bot made using the Eris library in Javascript!"
+    bot.editStatus("online", {
+      name: `on ${bot.guilds.size} servers`,
+      type: 0
     });
   });
 
 bot.on("ready", () => {
-  console.log("ChatGPT bot is connected and ready!");
+  console.log("Bot is ready!");
 });
 
 bot.on("error", (err) => {
@@ -54,29 +53,67 @@ bot.on("messageCreate", (msg) => {
 });
 
 bot.on("messageCreate", async (msg) => {
-    if (msg.content === "*help") {
-        await bot.createMessage(msg.channel.id, {
-            embed: {
-                color: 0x00ff00,
-                title: "Help Command",
-                description: "Here's a list of commands:",
-                fields: [
-                    {
-                        name: "? [question]",
-                        value: "Ask a question to the bot."
-                    },
-                    {
-                        name: "!help",
-                        value: "Shows this help message."
-                    }
-                ],
-                footer: {
-                    text: "Created by rendick"
-                }
-            }
-        });
-    }
+  if (msg.content === "*help") {
+    await bot.createMessage(msg.channel.id, {
+      embed: {
+        color: 0xeeeeee,
+        title: "Help Command",
+        description: "Here's a list of commands:",
+        fields: [
+          {
+            name: "? [question]",
+            value: "Ask a question to the bot.",
+          },
+          {
+            name: "*help",
+            value: "Shows this help message.",
+          },
+          {
+            name: "*media",
+            value: "",
+          },
+        ],
+        footer: {
+          text: "Created by rendick",
+        },
+      },
+    });
+  }
 });
 
+
+
+bot.on("messageCreate", async (msg) => {
+  if (msg.content === "*media") {
+    await bot.createMessage(msg.channel.id, {
+      embed: {
+        color: 0xeeeeee,
+        title: "Social Media",
+        description: "Here's a list of our social media:",
+        fields: [
+          {
+            name: "Source code",
+            value:
+              "Our open source code is in [GitHub](https://github.com/naddurkostia/chatgpt-discord)",
+          },
+          {
+            name: "Support / Questions",
+            value:
+              "Bot owner responds in his [Telegram](https://t.me/kostiandd) or in issues [GitHub](https://github.com/naddurkostia/chatgpt-discord/issues)",
+          },
+        ],
+        footer: {
+          text: "Created by rendick",
+        },
+      },
+    });
+  }
+});
+
+bot.on("ready", () => {
+  console.log("Bot is ready!");
+
+  bot.createMessage("1055232739017769051", `Bot started`);
+});
 
 bot.connect();
