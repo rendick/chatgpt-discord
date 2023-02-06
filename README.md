@@ -3,4 +3,4 @@ ChatGPT Discord bot
 
 ---
 
-Soon..
+**SOON**
