@@ -1,6 +1,12 @@
-# chatgpt-discord
-ChatGPT Discord bot
+## ChatGPT Discord bot
 
----
+### Installation
 
-**SOON**
+```bash
+git clone https://github.com/rendick/chatgpt-discord.git
+cd chatgpt-discord
+npm i
+```
+
+If you have a ChatGPT token, insert it in **.env**.
+
